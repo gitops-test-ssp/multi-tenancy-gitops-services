@@ -3,7 +3,7 @@ kind: RoleBinding
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "225"
-  name: keycert-rb
+  name: keycert-hook-rb
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
