@@ -1,6 +1,8 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "225"
   name: ibm-ssp-engine-psp
   labels:
     app: "ibm-ssp-engine-psp"

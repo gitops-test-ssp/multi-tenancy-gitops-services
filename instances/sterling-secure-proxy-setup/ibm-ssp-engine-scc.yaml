@@ -1,6 +1,8 @@
 apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
-metadata: 
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "225"
   name: ibm-ssp-engine-scc
   labels:
     app.kubernetes.io/name: ibm-ssp-engine-scc
