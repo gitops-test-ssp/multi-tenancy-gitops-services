@@ -63,7 +63,8 @@ oc create secret generic ibm-ssp-cm-secret --type=Opaque \
 --from-literal=keyCertStorePassphrase="${CM_CERTSTORE_PASSWORD}" \
 --from-literal=keyCertEncryptPassphrase="${CM_CERTENCRYPT_PASSWORD}" \
 --from-literal=customKeyCertPassphrase="${CM_CUSTOMCERT_PASSWORD}" \
---dry-run=client -o yaml > delete-ssp-cm-secret.yaml
+-n "ssp" \
+-o yaml > delete-ssp-cm-secret.yaml
 
 # Encrypt the secret using kubeseal and private key from the cluster
 kubeseal -n ${NS} --controller-name="${SEALED_SECRET_CONTROLLER_NAME}" --controller-namespace="${SEALED_SECRET_NAMESPACE}" -o yaml < delete-ssp-cm-secret.yaml
@@ -79,7 +80,8 @@ oc create secret generic ibm-ssp-engine-secret --type=Opaque \
 --from-literal=keyCertStorePassphrase="${ENGINE_CERTSTORE_PASSWORD}" \
 --from-literal=keyCertEncryptPassphrase="${ENGINE_CERTENCRYPT_PASSWORD}" \
 --from-literal=customKeyCertPassphrase="${ENGINE_CUSTOMCERT_PASSWORD}" \
---dry-run=client -o yaml > delete-ibm-ssp-engine-secret.yaml
+-n "ssp" \
+-o yaml > delete-ibm-ssp-engine-secret.yaml
 
 # Encrypt the secret using kubeseal and private key from the cluster
 kubeseal -n ${NS} --controller-name="${SEALED_SECRET_CONTROLLER_NAME}" --controller-namespace="${SEALED_SECRET_NAMESPACE}" -o yaml < delete-ibm-ssp-engine-secret.yaml
