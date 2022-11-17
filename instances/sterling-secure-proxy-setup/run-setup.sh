@@ -54,6 +54,8 @@ if [[ -z ${NS} ]]; then
   exit 1
 fi
 
+oc project "{$NS}"
+
 SEALED_SECRET_NAMESPACE=${SEALED_SECRET_NAMESPACE:-sealed-secrets}
 SEALED_SECRET_CONTROLLER_NAME=${SEALED_SECRET_CONTROLLER_NAME:-sealed-secrets}
 
@@ -102,3 +104,9 @@ sh > ssp-cm-pvc.yaml
 
 ( echo "cat <<EOF" ; cat ssp-engine-pvc.yaml_template ;) | \
 sh > ssp-engine-pvc.yaml
+
+oc apply -f ssp-cm-pvc.yaml
+oc apply -f ssp-engine-pvc.yaml
+
+rm ssp-cm-pvc.yaml
+rm ssp-engine-pvc.yaml
