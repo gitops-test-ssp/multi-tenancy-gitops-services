@@ -4,7 +4,7 @@ metadata:
   generateName: keycert-sync-
   namespace: ssp
   annotations:
-    argocd.argoproj.io/sync-wave: "299"
+    argocd.argoproj.io/sync-wave: "286"
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
