@@ -5,8 +5,6 @@ metadata:
   namespace: ssp
   annotations:
     argocd.argoproj.io/sync-wave: "286"
-    argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
