@@ -107,6 +107,3 @@ sh > ssp-engine-pvc.yaml
 
 oc apply -f ssp-cm-pvc.yaml
 oc apply -f ssp-engine-pvc.yaml
-
-rm ssp-cm-pvc.yaml
-rm ssp-engine-pvc.yaml
