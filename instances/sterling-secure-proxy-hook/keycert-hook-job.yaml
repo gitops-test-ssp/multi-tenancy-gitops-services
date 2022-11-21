@@ -15,6 +15,6 @@ spec:
         command: ["bash"]
         args:
           - -c
-          - "oc rsync ibm-ssp-cm-ibm-ssp-cm-0:defkeyCert.txt /tmp/;sleep 5;oc create secret generic -n ssp engine-key-cert --from-file=keyCert=./tmp/defkeyCert.txt --dry-run=client -o yaml | oc apply -f -"
+          - "oc wait -n ssp pod ibm-ssp-cm-ibm-ssp-cm-0 --for=condition=Ready;oc rsync ibm-ssp-cm-ibm-ssp-cm-0:defkeyCert.txt /tmp/;sleep 5;oc create secret generic -n ssp engine-key-cert --from-file=keyCert=./tmp/defkeyCert.txt --dry-run=client -o yaml | oc apply -f -"
       restartPolicy: OnFailure
   backoffLimit: 25
